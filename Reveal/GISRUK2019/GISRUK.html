@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Stehle GISRUK 2019: SWEEP</title>
+
+		<meta name="description" content="GISRUK 2018">
+		<meta name="author" content="Sam Stehle">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../css/reveal.css">
+		<link rel="stylesheet" href="../css/theme/solarizedBCD.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../css/print/pdf.css' : '../css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="BCD_title_slide_background2.JPG">
+					<h2> The Series with Elastic Extents Problem (SWEEP)</h2>
+					<h3> "Gerrymandering" Urban Time Series</h3>
+					<p>
+						Sam Stehle / <a href="http://twitter.com/sam_stehle">@sam_stehle</a>
+					</p>
+
+					<p>	
+						<small> Building City Dashboards</small>
+					</p>
+					<p>
+						<small>National Centre for Geocomputation, Maynooth University, Maynooth Ireland</small>
+					</p>
+					<p>
+						<small>GISRUK 2019, Newcastle University</small>
+					</p>
+					<aside class="notes">
+						Hi I'm sam. I'm going to talk about the temporal equivalent to the Modifiable Areal Unit Problem - also known as the 
+						Modifiable Temporal Unit Problem. Since you can't pronounce MTUP, I adopted the SWEEP acronym for the purpose of this talk.
+					</aside>
+				</section>
+				
+				<section data-background="BCD_slide_image.JPG">
+					<!-- MAUP intro -->
+					<section data-transition="none">
+						<div align="right">
+							<h2>The Modifiable Areal Unit Problem</h2>
+						</div>
+						
+						<div>
+							<img width="800" height="550" class="plain" data-src="MAUP.JPG">
+						</div>
+					</section>
+			<!--		
+					<section data-transition="none">
+						<div align="right">
+							<h2>implications of MAUP: ecological fallacy</h2>	
+						</div>
+						<div>
+							<img width="800" height="550" class="plain" data-src="MAUP_ecological_fallacy.JPG">
+						</div>
+					</section>
+					
+					<section data-transition="none">
+						<div align="right">
+							<h2>implications of MAUP: summary statistics</h2>
+						</div>
+						<div>
+							<img width="1060" height="549" class="plain" data-src="MAUP_moran.JPG">
+						</div>
+					</section>
+					
+					<section>
+						<div align="right">
+							<h2>patterns in MAUP effects</h2>
+						</div>
+						<div align="left">
+							<br> </br>
+							<p> correlation among census variables increases with aggregation <small> (Gehlke and Biehl 1934)</small></p>
+							<p> correlation between wheat per acre and potatoes per acre increases with size of units <small>(Yule and Kendall 1950) </small></p>
+							<p> correlation among demographic indicators and voting tendency increases as number of spatial units decrease <small>(Openshaw and Taylor 1979) </small></p>
+						</div>
+					</section>
+					
+					<section data-transition="none">
+						<div align="right">
+							<h2>patterns in MAUP effects</h2>
+						</div>
+						<div align="left">
+							<br></br>
+							<p> no predictable patterns between demographic changes and household income among different zonations <small>(Fotheringham and Wang 1991) </small></p>
+							<p> positive and negative correlation changes at different scales of aggregation of US Census variables <small>(Flowerdew 2011)</small></p>
+							<p> sizes of mean, standard deviation, population show no recognizable effect on observations of MAUP <small>  (Flowerdew 2011) </small></p>
+							
+						</div>
+					</section>
+			
+			-->
+			
+				</section>
+				
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.JPG">
+					<!-- parallels in time -->
+					<div align="right">
+							<h2>Parallels in time: The SWEEP</h2>
+						</div>
+						
+						<div>
+							<img width="1200" height="650" class="plain" data-src="SWEEP_description.JPG">
+						</div>
+				</section>
+				
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.JPG">
+					<!-- demonstrating on Dublin data -->
+					<section>
+						<div align="right">
+							<h2>Dublin Sound monitoring</h2>
+						</div>
+						<img width="850" height="425" class="plain" data-src="SoundMonitors.JPG">
+						<div align="left">
+							<p><small>http://dublincitynoise.sonitussystems.com/applications/api/dublinnoisedata.php?location=7&start=1554218025&end=1554822825</small></p>
+
+						</div>
+
+					</section>
+
+				<!--
+					<section data-markdown>
+							<script type="text/template">
+								<small>http://dublincitynoise.sonitussystems.com/applications/api/dublinnoisedata.php?location=7&start=1554218025&end=1554822825</small>	
+								```
+								{"Blessington Street Basin":  
+								   "dates":[  
+									  "09\/04\/2019",
+									  "09\/04\/2019"
+								   ],
+								   "times":[  
+									  "13:20:00",
+									  "13:25:00"
+								   ],
+								   "aleq":[  
+									  "43.36",
+									  "39.45"
+								   ],
+								   "entries":2
+								}	
+								```
+							</script>
+
+					</section>
+					
+				-->
+					<section>
+						<div align = "right">
+							<h2>Public Reporting</h2>
+						</div>
+						<!-- picture of time series, picture of histogram, picture of calendar -->
+						<div>
+							<img width="1200" height="625" class="plain" data-src="NavanRdReporting.JPG">
+						</div>
+					</section>
+					<section>
+						<div align="right">
+							<h2>Dublin Agglomeration Environmental </h2>
+							<h2>Noise Action Plan (Nov. 2018)</h2>
+						</div>
+						<br></br>
+						<table>
+							<thead>
+								<tr style="font-variant:small-caps;font-size:36px">
+								<th><font color="#DA1E4D">Threshold (db)</font></th>
+								<th><font color="#DA1E4D">Daytime (07:00 - 19:00)</font></th>
+								<th><font color="#DA1E4D">nighttime (23:00 - 07:00)</font></th>
+							</thead>
+							<tbody>
+								<td>Quiet Area</td>
+								<td><55</td>
+								<td><45</td>
+							</tbody>
+							<tbody>
+								<td>Desirable Low</td>
+								<td><55</td>
+								<td><50</td>
+							</tbody>
+							<tbody>
+								<td>Undesirable High</td>
+								<td>>70</td>
+								<td>>55</td>
+							</tbody>
+						</table>
+					</section>
+					
+				</section>
+				
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.JPG">
+					<div align="right">
+						<h2>testing for SWEEP effects</h2>
+					</div>
+					
+					<div align="left">
+						<li>(log) mean decibel level</li>
+						<li>frequency of observations which breach value limits</li>
+						<br></br>
+						<font color="#DA1E4D">
+						<li>higher than 'undesirable high'</li>
+						<li>higher than 'desirable low'</li>
+						<li>lower than 'quiet area'</li>
+						<li>for each separate value limit, night and day</li>
+						</font>
+					</div>
+				
+				</section>
+				
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.JPG">
+					<section>
+						<!-- Scalar effects -->
+						<div>
+							<img width="650" height="525" class="plain" data-src="DayQuietAreaSlopeChart.png">
+							<img width="650" height="525" class="plain" data-src="NightQuietAreaSlopeChart.png">
+							
+						</div>
+					</section>
+					<section>
+						<div>
+							<img width="650" height="525" class="plain" data-src="DayDesirableLowSlopeChart.png">
+							<img width="650" height="525" class="plain" data-src="NightDesirableLowSlopeChart.png">
+							
+						</div>
+					</section>
+					<section>
+						<div>
+							<img width="650" height="525" class="plain" data-src="DayUndesirableSlopeChart.png">
+							<img width="650" height="525" class="plain" data-src="NightUndesirableSlopeChart.png">
+							
+						</div>
+					</section>
+				</section>
+				
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.JPG">
+				
+				<!--
+					<section>
+						<div align="right">
+							<h2>Blessington Street Basin </h2>
+						</div>
+						<div>
+							<img width="1100" height="425" class="plain" data-src="BlessingtonStBasin_barplots.png">
+						</div>
+					</section>
+				-->
+					<section>
+						<div align="right">
+							<h2>Blessington Street Basin </h2>
+						</div>
+						<div>
+							<img width="1300" height="625" class="plain" data-src="BlessingtonStBasin_5min_hourly.png">
+						</div>
+					</section>
+					<section>
+						<div align="right">
+							<h2>Blessington Street Basin </h2>
+						</div>
+						<div>
+							<img width="1300" height="625" class="plain" data-src="BlessingtonStBasin_5min_hourly_daily.png">
+						</div>
+					</section>
+					<section>
+						<div align="right">
+							<h2>Blessington Street Basin </h2>
+						</div>
+						<div>
+							<img width="1300" height="625" class="plain" data-src="BlessingtonStBasin_boxplots.png">
+						</div>
+					</section>
+					<section>
+						<div align="right">
+							<h2>Blessington Street Basin </h2>
+						</div>
+						<div>
+							<img width="1000" height="450" class="plain" data-src="BlessingtonStBasin_boxplots.png">
+						</div>
+						<div align = "center">
+							<p>mean skewness of 5-minute observations = 0.251</p>
+							
+						</div>
+					</section>
+				
+				</section>
+				
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.JPG">
+					<!--
+					<section  data-transition="none">
+						<div align="right">
+							<h2>Implications of scalar SWEEP effects </h2>
+						</div>
+						<div align="left"> 
+							<p>except in extreme cases, aggregating yields higher mean db values</p>
+							<p>meaning more frequent passing of high thresholds</p>
+							<p>and less frequent satisfaction of quiet area thresholds</p>
+						</div>
+					</section>
+					-->
+					<section  data-transition="none">
+						<div align="right">
+							<h2>Implications of scalar SWEEP effects </h2>
+						</div>
+						<div align="left"> 
+							<p>except in extreme cases, aggregating yields higher mean db values</p>
+							<p>meaning more frequent passing of high thresholds</p>
+							<p>and less frequent satisfaction of quiet area thresholds</p>
+						</div>
+						<div>
+							<img width="550" height="425" class="plain" data-src="DayQuietAreaSlopeChart.png">
+							<img width="550" height="425" class="plain" data-src="DayDesirableLowSlopeChart.png">
+								
+						</div>
+					</section>
+				<!--
+					<section>
+						<div align="right">
+							<h2>Implications of scalar SWEEP effects </h2>
+						</div>
+						<div align="left"> 
+							<br></br>
+							<br></br>
+							<li>Health: sound exposure is harmful at at short and long intervals</li>
+							<li>Mitigation and reward: funding could reflect observed sound</li>
+							<li>Effect is stronger based on time series properties</li>
+						</div>
+					</section>
+				-->
+				</section>
+
+				
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.JPG">
+					<!-- segmentation effects -->
+					<section>
+						<div align="right">
+							<h2>1-hour aggregation as 12 segmentations</h2>
+						</div>
+						<div>
+							<img width="900" height="550" class="plain" data-src="segmentationExplanation.png">
+						</div>
+					</section>
+					<section>
+						<div align="right">
+							<h2>Segmentation  effects</h2>
+						</div>
+						<div>
+							<img width="600" height="400" class="plain" data-src="MellowsPark_1hrSegmentations.png">
+							<img width="600" height="400" class="plain" data-src="RahenyLibrary_1hrSegmentations.png">
+						</div>
+					<!--
+						<div align="center">
+							<p>SWEEP effect measured by positive/negative slope (sen 1968)</p>
+						</div>
+					-->
+					</section>
+					<section>
+						<div align="right">
+							<h2>segmentation effects</h2>
+						</div>
+						<div>
+							<img width="500" height="350" class="plain" data-src="MellowsPark_1hrSegmentations.png">
+							<img width="500" height="350" class="plain" data-src="RahenyLibrary_1hrSegmentations.png">
+						</div>
+						<div align="center">
+							<p>mean time of day of :00 segment: 11:30</p>
+							<p>mean time of day of :55 segment: 12:25</p>
+						</div>
+					</section>
+					<section>
+						<div align="right">
+							<h2>segmentation and trend</h2>
+						</div>
+						<div>
+							<img width="1100" height="550" class="plain" data-src="DrumcondraLibrary_NightDaySlope.png">
+						</div>
+						
+					</section>
+					<section>
+						<div align="right">
+							<h2>segmentation and trend</h2>
+						</div>
+						<br></br>
+						<div>
+							<table>
+								<thead>
+									<tr style="font-variant:small-caps;font-size:32px">
+									<th></th>
+									<th><font color="#DA1E4D">Stations with quiet area SWEEP effect</font></th>
+									<th><font color="#DA1E4D">Stations with undesirable high SWEEP effect</font></th>
+									<th><font color="#DA1E4D">observations with increasing trend</font></th>
+								</thead>
+								<tbody>
+									<td>Daytime</td>
+									<td>67%</td>
+									<td>20%</td>
+									<td>49.4%</td>
+								</tbody>
+								<tbody>
+									<td>Nighttime</td>
+									<td>80%</td>
+									<td>73%</td>
+									<td>79.7%</td>
+								</tbody>
+							</table>						
+						</div>
+						<br></br>
+						
+					</section>
+				</section>
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.JPG">
+					<section>
+						<div align="right">
+							<h2>implications of segmentation effects</h2>
+						</div>
+						<br></br>
+						<div align="left">
+							<li>Increasing trend influences segmentation effect</li>
+							<li>SWEEP effects depend on how day/night times are defined (boundary effects)</li>
+							<li>Quiet area threshold is more volatile that undesirable high</li>
+						</div>
+					</section>
+					<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.JPG">
+						<div align="right">
+							<h2>anything more than a theoretical exercise?</h2>
+						</div>
+						<div align="right">
+							<p><font color="#DA1E4D">while space is continuous, time is discretised, forming logical boundaries</font></p>
+						</div>
+						<div>
+							<img width="900" height="550" class="plain" data-src="segmentationExplanation.png">
+						</div>
+					</section>
+				</section>
+				
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.JPG">
+					<div align="right">
+						<h2>considering intent: gerrymandering time series</h2>
+					</div>
+					<div align="left">
+						<ul>
+							<li class="fragment">Communication: portray low sound to the public
+								<ul>
+									<li>report disaggregated observations</li>
+								</ul>
+							</li>
+							<li class="fragment">Incentive/Disincentive schemes: reward low/punish high sound
+								<ul>
+									<li>no more cynical than political gerrymandering</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div align="center">
+						<p class="fragment"><img width="350" height="325" class="plain" data-src="redistricting.png"></p>
+
+					</div>
+				</section>
+				
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.JPG">
+					<div align="right">
+						<h2>Concluding recommendations</h2>
+					</div>
+					<br></br>
+					<div align="left">
+						<li class="fragment">Standards for environmental reporting, especially when incentivised</li>
+						<li class="fragment">Further reflection on the impact of stationarity, variability, boundary definitions</li>
+						<li class="fragment">Streaming data for official statistics</li>
+						<li class="fragment">Measure the impact of day of week - noncontiguous segmentations</li>
+						<li class="fragment">Uncertain Geographic Context Problem <small>(Kwan 2012)</small></li>
+					</div>
+				</section>
+				
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_final_slide_img.jpg">
+					
+				</section>
+
+				<section data-background="D:/reveal/reveal/reveal.js-master/CommonImages/BCD_slide_image.jpg">
+					<div align="left">
+						<p><font color="#DA1E4D">Sam Stehle</font></p>
+						<p><font color="#DA1E4D">Sam.Stehle@mu.ie</font></p>
+						<p><font color="#DA1E4D"><a href="http://twitter.com/sam_stehle">@sam_stehle</a></font></p>
+						<p><font color="#DA1E4D"></font></p>
+						<p><font color="#DA1E4D">dublindashboard.ie</font></p>
+						<p><font color="#DA1E4D">dashboards.maynoothuniversity.ie</font></p>
+
+					</div>
+				</section>
+				
+			</div>
+
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				width: 1500,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../plugin/zoom-js/zoom.js', async: true },
+					{ src: '../plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
