@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Big Data, Theory, and Black Boxes</title>
+
+		<meta name="description" content="A GeoVISTA Brown Bag Talk">
+		<meta name="author" content="Sam Stehle">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../css/reveal.css">
+		<link rel="stylesheet" href="../css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../css/print/pdf.css' : '../css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h3>Big Data, Theory, and Black Boxes:</h3>
+					<h2>Ensuring  Evaluations do not <b>'Speak for Themselves'</b></h2>
+					
+					<p>
+						<small>Sam Stehle / <a href="http://twitter.com/SamStehle">@SamStehle</a></small>
+					</p>
+					<p>	
+						<small>GeoVISTA Brown Bag Series, March 29, 2017</small>
+					</p>
+					
+				</section>
+
+				<!--v Anderson Vertical Section v-->
+				<section>
+					<section>
+						<a href="#" class="EndOfTheory">
+							<a href="https://www.wired.com/2008/06/pb-theory/" target="_newtab"><img width="900" height="600" data-src="AndersonBigData.jpg" alt="AndersonBigData"></a>
+						</a>
+					</section>
+					<section>
+						<a href="#" class="EndOfTheory">
+							<a href="https://www.wired.com/2008/06/pb-theory/" target="_newtab"><img width="450" height="300" data-src="AndersonBigData.jpg" alt="AndersonBigData"></a>
+						</a>
+						<p>Anderson: "With enough data, the numbers speak for themselves"</p>
+						<aside class="notes">
+							reasons why big data might 'speak for itself':
+							volume means correlation is enough, don't need context, don't need sample, messy data 'noise' is ignored
+							raw data isn't subejctively filtered/editied
+							
+							could name all of the publications that aim to prove this is false
+						</aside>
+					</section>
+				</section>
+				<!--^ Anderson Vertical Section ^-->
+				
+				<section>
+					<aside class="notes">	
+						hence a reliance on unsupervised methods
+					<aside class="notes">
+				</section>
+				
+				<!--v Farber Vertical Section v-->
+				<section>
+					<section>
+						<blockquote>
+							&ldquo;The whole point in performing unsupervised methods in data mining is to find previously unknown knowledge&rdquo; 
+						</blockquote>
+							<div align="right" style="font-size:24px">
+							F&auml;rber et al 2010, 2
+						</div>
+						<aside class="notes">
+								deviations from annotated classes could be a good thing
+						</aside>
+					</section>
+					<section>
+						<a href="#" class="FarberEtAl">
+							<img width="750" height="400" data-src="FarberClusterings.jpg" alt="FarberClusters"></a>
+						</a>
+						<div align="right" style="font-size:24px">
+							F&auml;rber et al 2010
+						</div>
+						
+					</section>
+					<section>
+						<a href="#" class="FarberEtAl" >
+							<img width="375" height="200" align="right" data-src="FarberClusterings.jpg" alt="FarberClusters"></a>
+						</a>
+						<div align="left">
+							<h4>many methods do not generate a single, optimal, &lsquo;<font color="gold">gold standard</font>&rsquo; result</h4>
+							<p class = "fragment">infinite parameter combinations</p>
+							<p class = "fragment">generative components</p>
+							<p class = "fragment">partial grouping assignments</p>
+						</div>
+						<aside class="notes">
+								thats the idea of a black box - inputs go in, stuff happens, outputs come out
+								
+								makes these methods hard to use without knowing the impact that parameters have on the model
+								
+								and its impossible to develop theory to guide parameter usage since all data is unique
+						</aside>
+					</section>
+				</section>
+				<!--^ Farber Vertical Section ^-->
+				
+				<section>
+					<h5>How do you validate such a model?</h5>
+					<h5 class="fragment fade-in">How do you <i>evaluate</i> such a model?</h5>
+					<h5 class="fragment fade-in">How do you <i>EVALU-date?</i> such a model?</h5>
+					
+				</section>
+				<section>
+					<h5>Expectiation-Maximization / Likelihood Function</h5>
+					<a href="#" class="EM_OakRidge">
+						<img width="500" height="500" data-src="EM_plot_WSTAMP.png" alt="OakRidge_EM"></a>
+					</a>	
+					<aside class="notes">
+							-measures likelihood that proposed model matches observations by creating a function to estimate parameters, then
+								maximizing the likelihood of those parameters and adjusting the function
+							
+							-prone to overfitting
+							-prone to local maxima
+
+							and EM is automatically generated by many analysis packages
+					</aside>
+				</section>
+				<section>
+					<a href="#" class="ChangEtAl">
+						<img width="900" height="550" data-src="ChangInterpretation.jpg" alt="ChangEvaluation"></a>
+					</a>
+					<div align="right" style="font-size:24px">
+						Chang et al 2009
+					</div>
+					<aside class="notes">
+							it is also true that 'likely' models may not be useful or interpretable'
+							
+							"model which acheive higher perplexity often consist of less interpretable latent spaces"
+					</aside>
+				</section>
+				<section>
+					<h2>Interestingness Measures</h2>
+					<table>
+						<thead>
+							<tr style="font-variant:small-caps;font-size:32px">
+								<th><font color="gold">Measure</font></th>
+								<th><font color="gold">Classification</font></th>
+								<th><font color="gold">Description</font></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="font-size:22px">
+								<td>Conciseness</td>
+								<td>Objective</td>
+								<td>pattern contains few attribute-value pairs</td>
+							</tr>
+							<tr style="font-size:22px">
+								<td>Generality/Coverage</td>
+								<td>Objective</td>
+								<td>pattern characterises greater proportion of inputs</td>
+							</tr>
+							<tr style="font-size:22px">
+								<td>Diversity</td>
+								<td>Objective</td>
+								<td>pattern contents are significantly different from one another</td>
+							</tr>
+							<tr style="font-size:22px">
+								<td>Peculiarity</td>
+								<td>Objective</td>
+								<td>pattern is far from other patterns as per a distance measure</td>
+							</tr>
+							<tr style="font-size:22px">
+								<td>Reliability</td>
+								<td>Objective</td>
+								<td>pattern occurs in high percentage of applicable cases</td>
+							</tr>
+							<tr style="font-size:22px">
+								<td>Novelty</td>
+								<td>Subjective</td>
+								<td>pattern contains information not previously known or inferrable</td>
+							</tr>
+							<tr style="font-size:22px">
+								<td>Unexpectedness/Surprisingness</td>
+								<td>Subjective</td>
+								<td>pattern contradicts existing expectations</td>
+							</tr>
+							<tr style="font-size:22px">
+								<td>Utility</td>
+								<td>Semantic</td>
+								<td>pattern contributes toward reaching a goal</td>
+							</tr>
+							<tr style="font-size:22px">
+								<td>Actionability</td>
+								<td>Semantic</td>
+								<td>pattern enables decision making</td>
+							</tr>
+						</tbody>
+					</table>
+					<aside class="notes">
+						note on patterns definition
+					</aside>
+				</section>
+				
+				<!--v LDA Vertical Section v-->
+				<section>
+					<section>
+						<div align="left">
+							<h4>An illustration: Latent Dirichlet Allocation</h4>
+							<h5>Semi-classification of text</h5>
+						</div>
+						<a href="#" class="LDA_Diagram" >
+							<img width="500" height="500" data-src="LDA_Diagram.png" alt="LDA_Diagram"></a>
+						</a>
+						<aside class="notes">
+							hence, documents have partial topic assignments
+						</aside>
+						
+					</section>
+					<section>
+						<h5>3 critical parameters</h5>
+						<ul>
+							<li>k - number of topics/clusters</li>
+							<li>alpha - prior distribution of documents-to-topics</li>
+							<li>minimum term-frequency/inverse-document frequency (tf-idf)- defines terms in the vocabulary</li>
+						</ul>
+					</section>
+					<section>
+						<h5>Generative model</h5>
+						<a href="#" class="LDA_Plate" >
+							<img width="700" height="325" data-src="LDA_Plate_Notation.jpg" alt="LDA_Plate"></a>
+						</a>
+						<aside>
+						1. choose distribution of topics over document
+						2. for each term position:
+						Choose topic
+						3. choose term
+					</section>
+				</section>
+				<!--^ LDA Vertical Section ^-->
+				
+				<!--v Catalonia Vertical Section v-->
+				<section>
+					<section>
+						<h5>A case study: Catalonian independence movement</h5>
+						<img width="425" height="350" data-src="Catalonia_results.jpg" alt="results_catalonia">
+						<img width="425" height="350" data-src="Catalonia_Is_Not_Spain.jpg" alt="Catalonia_spain">
+
+						<div style="font-size:24px">
+							Chislett 2015, Real Instituto Elcano  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Highfield 2002, El Centro Campista
+						</div>
+
+					</section>
+					<section>
+						<div align = "left">
+							<p>21688 English news articles</p>
+							<p>August-November 2015</p>
+							<p>local, regional, national, international news sources</p>
+							<p>variety of specific sections, where available</p>
+						</div>
+					</section>
+					<section>
+						<div align = "left">
+							<h5>Model Sensativity Analysis</h5>
+							<p>4 levels of k: 10, 25, 50, 100</p>
+							<p>3 minimum term frequency - inverse document frequency</p>
+							<p>4 alpha prior distributions</p>
+						</div>
+					</section>
+				</section>
+				<!--^ Catalonia Vertical Section ^-->
+				
+				<!--v results Sections, some vertical v-->				
+				<section>
+					<h5 align="left">Conciseness</h5>
+					<p><i><font color="gold">pattern contains few attribute-value pairs</font></i></p>
+					<p> </p>
+					<p align="left">fewer topics fit better into user's knowledge base</p>
+					<img class="fragment fade-in" width="700" height="375" data-src="ChangInterpretation.jpg" alt="ChangEvaluation">
+				</section>
+				<section>
+					<section>
+						<h5 align="left">Generality/Coverage</h5>
+						<p><i><font color="gold">pattern characterises greater proportion of inputs</font></i></p>
+						<p> </p>
+						<p align="left" style="font-size:30px">higher minimum tf-idf reduces size of vocabulary. documents consisting of no terms in vocabulary cannot be coded</p>
+						<p align="left" style="font-size:30px">documents consisting of no terms in vocabulary cannot be coded</p>
+						<p align="left" style="font-size:30px">measured as percent of documents coded</p>
+					</section>
+					<section>
+						<h5 align="left">Generality/Coverage</h5>
+						<p><i><font color="gold">pattern characterises greater proportion of inputs</font></i></p>
+						<p> </p>
+						<p> 
+							<img width="700" height="375" data-src="Generality_by_tfidf.png" alt="generality">
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h5 align="left">Diversity</h5>
+						<p><i><font color="gold">pattern contents are significantly different from one another</font></i></p>	
+						<p> </p>
+						<p align="left">topic disparity yields new, separate insights</p>
+						<p align="left">measured as variance from even distribution of each document to every topic</p>
+						<aside class="notes">
+							which means that depending on the number of topics, the maximum diversity can change
+						</aside>						
+					</section>
+					<section>
+						<h5 align="left">Diversity</h5>
+						<p><i><font color="gold">pattern contents are significantly different from one another</font></i></p>	
+						<p> </p>
+						<img width="425" height="300" data-src="diversity_tfidf_05.png">
+						<img width="425" height="300" data-src="diversity_tfidf_05_prop.png">	
+						<div style="font-size:24px">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							raw diversity score  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  diversity score as percent of theoretical max
+						</div>
+					</section>
+					<section>
+						<h5 align="left">Diversity</h5>
+						<p><i><font color="gold">pattern contents are significantly different from one another</font></i></p>	
+						<p> </p>
+						<img width="425" height="300" data-src="diversity_alpha_006.png">
+						<img width="425" height="300" data-src="Diversity_alpha_006_prop.png">
+						<div style="font-size:24px">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							raw diversity score  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  diversity score as percent of theoretical max
+						</div>						
+					</section>
+				</section>
+				<section>
+					<section>
+						<h5 align="left">Peculiarity</h5>
+						<p><i><font color="gold">pattern is far from other patterns as per a distance measure</font></i></p>
+						<p> </p>
+						<p align="left">measured as inverse of proportion of terms shared by topics in a pair of patterns</p>
+						<p align="left">number of topics and minimum tf-idf influence potentially shared terms</p>						
+					</section>
+					<section>
+						<h5 align="left">Peculiarity</h5>
+						<p><i><font color="gold">pattern is far from other patterns as per a distance measure</font></i></p>
+						<p> </p>
+						<img width="425" height="300" data-src="peculiarity_alpha_006.png">
+						<img width="425" height="300" data-src="peculiarity_alpha_029.png">				
+						<div style="font-size:24px">
+							alpha = 0.006  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  alpha = 0.029
+						</div>
+					</section>
+					<section>
+						<h5 align="left">Peculiarity</h5>
+						<p><i><font color="gold">pattern is far from other patterns as per a distance measure</font></i></p>
+						<p> </p>
+						<img width="425" height="300" data-src="peculiarity_tfidf_03.png">
+						<img width="425" height="300" data-src="peculiarity_tfidf_05.png">				
+						<div style="font-size:24px">
+							&nbsp;&nbsp;minimum tf-idf = 0.03  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  minimum tf-idf = 0.056
+						</div>
+					</section>
+				</section>
+				<section>
+					<h5 align="left">Reliability</h5>
+					<p><i><font color="gold">pattern occurs in high percentage of applicable cases</font></i></p>		
+					<p> </p>
+					<p align="left">track topics and terms for individual documents across patterns</p>
+					<p align="left">take random sample of documents</p>
+				</section>
+				<section>
+					<section>
+						<h5 align="left">Novelty</h5>
+						<p><i><font color="gold">pattern contains information not previously known or inferrable</font></i></p>	
+						<p> </p>
+						<p align="left">subjective evaluation of topics and term combinations</p>
+						<p align="left">increased range of terms - higher tf-idf </p>
+						<p align="left"> --and--</p>					
+						<p align="left">increased topics</p>					
+						<p align="left">increase the range of information available</p>					
+					</section>
+					<section>
+						<h5 align="left">Novelty</h5>
+						<p><i><font color="gold">pattern contains information not previously known or inferrable</font></i></p>	
+						<p> </p>
+						<p align="left"><u>10 topic model</u>: 'glencor' 'casilla' 'aspa' 'volkswagen' 'emiss' 'pet' 'deulofeu' 'elch'</p>
+						<p align="left"><u>25 topic model</u>: 'dish' 'chicken' 'pan' 'rice' 'dice' 'squid' 'nadal' 'prawn'</p>
+						<p align="left"><u>50 topic model</u>: 'abus' 'nosecessionist' 'insult' 'shakira' 'pop' 'summon' 'racist' 'fling'</p>
+						<p align="left"><u>100 topic model</u>: 'pet' 'vet' 'microchip' 'vaccine' 'refuge' 'fenc' 'foncubierta' 'martinez'</p>
+					</section>
+				</section>
+				<section>
+					<h5 align="left">Unexpectedness/Surprisingness</h5>
+					<p><i><font color="gold">pattern contradicts existing expectations</font></i></p>
+					<p> </p>
+					<p align="left">special case of novelty</p>					
+				</section>
+				<section>
+					<h5 align="left">Utility/Actionability</h5>
+					<p><i><font color="gold">pattern contributes toward reaching a goal/taking an action</font></i></p>
+					<p> </p>
+					<p align="left">I combine goals and actions in this evaluation</p>
+					<p align="left">select patterns to map semantic spaces of topics onto geographic space</p>
+				</section>
+				<section>
+					<h5 align="left">Summary</h5>
+					<table>
+						<thead>
+							<tr style="font-variant:small-caps;font-size:36px">
+								<th><font color="gold">Measure</font></th>
+								<th><font color="gold">Recommendation</font></th>
+								<th><font color="gold">Confidence</font></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="font-size:26px">
+								<td>Conciseness</td>
+								<td>low k</td>
+								<td><font color="orange">medium</font></td>
+							</tr>
+							<tr style="font-size:26px">
+								<td>Generality/Coverage</td>
+								<td>low minimum tf-idf</td>
+								<td><font color="green">high</font></td>
+							</tr>
+							<tr style="font-size:26px">
+								<td>Diversity</td>
+								<td>low alpha, mid tf-idf</td>
+								<td><font color="orange">medium</font></td>
+							</tr>
+							<tr style="font-size:26px">
+								<td>Peculiarity</td>
+								<td>low k: low alpha, high k: high tf-idf</td>
+								<td><font color="red">low</font></td>
+							</tr>
+							<tr style="font-size:26px">
+								<td>Reliability</td>
+								<td>*</td>
+								<td>*</td>
+							</tr>
+							<tr style="font-size:26px">
+								<td>Novelty</td>
+								<td>high topics, low minimum tf-idf</td>
+								<td><font color="green">high</font></td>
+							</tr>
+							<tr style="font-size:26px">
+								<td>Unexpectedness/Surprisingness</td>
+								<td>high topics, medium tf-idf, medium tf-idf</td>
+								<td><font color="red">low</font></td>
+							</tr>
+							<tr style="font-size:26px">
+								<td>Utility/Actionability</td>
+								<td>*</td>
+								<td>*</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<!--^ results Sections, some vertical ^-->
+
+				<section>
+					<h5 align="left">Final thoughts</h5>
+					<div align="left">
+						<p class = "fragment fade in"><li><font color="gold">evaluation</font>, <i>not validation</i></li></p>
+						<p class = "fragment fade in"><li>consider what it is we are evaluating</li></p>
+						<p class = "fragment fade in"><li>approaching general theory on using <font color="gold">black box</font>methods</li></p>
+						<p class = "fragment fade in"><li>interestingness measures are fairly independent</li></p>
+						<p class = "fragment fade in"><li>spatio-temporal context is an advantage</li></p>
+					</div>
+				</section>
+				<section>
+					<div align="left">
+						<p><font color="gold">Thank you!</font></p>
+						<p><font color="gold">Sam Stehle</font></p>
+						<p><font color="gold">samstehle@psu.edu</font></p>
+						<p><font color="gold">@thHigherthFewer</font></p>
+						<img width="300" height="300" data-src="rubberducky.png">
+					</div>
+				</section>
+				
+			</div>
+
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../plugin/zoom-js/zoom.js', async: true },
+					{ src: '../plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
