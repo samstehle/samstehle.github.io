@@ -33,13 +33,23 @@ h3 {
 	font-size: 1.6em;
 }
 
-p, ul, ol {
+p, ol {
 	margin-top: 0;
 	line-height: 180%;
 }
 
-ul, ol {
+ol {
 }
+
+ul {
+	list-style-position: inside;
+}
+
+li {
+	font-size: 1.6em;
+	color: #000000;
+}
+
 
 a {
 	text-decoration: none;
@@ -65,14 +75,14 @@ a:hover {
 	height: 115px;
 	margin: 0px auto;
 	padding: 0px 40px 0px 0px;
-	background: url(images/HorizonLake.jpg) no-repeat left top;
+	background: url(../SWEEP_thumb_nope.png) no-repeat left top;
 }
 
 /* Logo */
 
 #logo {
 	margin: 0;
-	padding: 0px 0px 0px 60px;
+	padding: 0px 0px 0px 20px;
 	color: #000000;
 }
 
@@ -90,7 +100,7 @@ a:hover {
 
 #logo p {
 	margin: 0;
-	padding: 0px 0 0 10px;
+	padding: 0px 0 0 00px;
 	font: normal 14px Georgia, "Times New Roman", Times, serif;
 	font-style: italic;
 	color: #FFFFFF;
@@ -151,7 +161,7 @@ a:hover {
 
 #menu ul {
 	margin: 0;
-	padding: 0px 3px;
+	padding: 0px 1px;
 	list-style: none;
 	line-height: normal;
 }
