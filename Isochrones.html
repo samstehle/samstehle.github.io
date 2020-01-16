@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+Name       : Vegetables  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20110416
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>(Meta)data for Decision</title>
+		<link href="./assets/css/styleindex.css" rel="stylesheet" type="text/css" media="screen" />
+
+		<script type="text/javascript">
+
+
+		</script>
+
+	</head>
+	<body>
+		<div id="header">
+			<div id="logo">
+				<h1><a href="index">sam stehle </a></h1>
+
+				<p>  Postdoctoral Researcher, National Centre for Geocomputation</p>
+			</div>
+		</div>
+		<!-- end #header -->
+		<div id="wrapper">
+			<div id="menu">
+				<ul>
+
+					<li><a href="index.html">Home</a></li>
+					<li><a href="AboutMe.html">About Me</a></li>
+					<li><a href="Research.html">Research</a></li>
+					<li><a href="Presentations.html">Presentations</a></li>
+					<li><a href="AdditionalProjects.html">Additional Projects</a></li>
+					<li><a href="Contact.html">Contact</a></li>
+
+
+				</ul>
+			</div>
+			<!-- end #menu -->
+
+
+		</div>
+		<div id="page">
+
+			<div id="content">
+						
+				<h4>
+				<p>Isochrones are concentric and connected shapes which show all of the locations reachable from a central point given an amount of travel time.
+            If not for terrain and for transportation networks, those shapes would be circular. But in cities, they tend to stretch along the
+            primary networks of travel. At any given time of day, an isochrone will show how far in every direction a person could travel from
+            any single place. When isochrones are created at different times of the day and compared, the contraction of a single ischrone
+            shows that a shorter distance can be traveled in the same amount of time, usually as a result of traffic volumes.</p>
+        <p><a href="https://www.atlasobscura.com/articles/isochrone-maps-commutes-travel-times?utm_source=twitter&utm_medium=atlas-page">
+            Atlas Obscura recently wrote about a resurgence in isochrone mapping</a>, partially due to an increase in the availability of traffic
+            data in urban areas./</p>
+        <p>There are several tutorials on how to create an animated isochrone map, like the one I created in Dublin below.</p>
+        <p>I followed <a href="https://digital-geography.com/service-areas-traffic-and-qgis/">this tutorial from the blog Digital Geography</a>
+            which uses the Here travel times API, Python, and QGIS + the Time Manager plugin to create a gif. </p>
+        <p>Here is the Python codeI used to create the isochrones. Follow the instructions in the previous link to get your own HERE id codes
+            and plug them into the following code. The location corresponds to Trinity College front gate on College Green.</p>
+        <div>
+            <div id="highlighter_182658" class="syntaxhighlighter  plain">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td class="gutter">
+                                <div class="line number1 index0 alt2">1</div>
+                                <div class="line number2 index1 alt1">2</div>
+                                <div class="line number3 index2 alt2">3</div>
+                                <div class="line number4 index3 alt1">4</div>
+                                <div class="line number5 index4 alt2">5</div>
+                                <div class="line number6 index5 alt1">6</div>
+                                <div class="line number7 index6 alt2">7</div>
+                                <div class="line number8 index7 alt1">8</div>
+                                <div class="line number9 index8 alt2">9</div>
+                              </td>
+                              <td class="code">
+                                  <div class="container">
+                                      <div class="line number1 index0 alt2">
+                                          <code class="plain plain">from PyQt4.QtCore import *</code>
+                                      </div>
+                                      <div class="line number2 index1 alt1">
+                                          <code class="plain plain">import urllib2, json</code>
+                                      </div>
+                                      <div class="line number3 index2 alt2">
+                                          <code class="plain plain">appcode ="your code from HERE"</code>
+                                      </div>
+                                      <div class="line number4 index3 alt1">
+                                          <code class="plain plain">appID = "your id from HERE"</code>
+                                      </div>
+                                      <div class="line number5 index4 alt2">&nbsp;</div>
+                                      <div class="line number6 index5 alt1">
+                                          <code class="plain plain">coordinates = "52.471868,-1.897253" </code>
+                                      </div>
+                                      <div class="line number7 index6 alt2">
+                                          <code class="plain plain">"#create the containing layer:"</code>
+                                      </div>
+                                      <div class="line number8 index7 alt1">
+                                          <code class="plain plain">vl = QgsVectorLayer("Polygon?crs=EPSG:102013", "temporary_polygons", "memory")</code>
+                                      </div>
+                                      <div class="line number9 index8 alt2">
+                                          <code class="plain plain">pr = vl.dataProvider()</code>
+                                      </div>
+                                      <div class="line number10 index9 alt1">
+                                          <code class="plain plain"># add fields</code>
+                                      </div>
+                                      <div class="line number11 index10 alt2">
+                                          <code class="plain plain">pr.addAttributes([QgsField("time", QVariant.Int),</code>
+                                      </div>
+                                      <div class="line number12 index11 alt1">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">QgsField("departure", QVariant.String),</code>
+                                      </div>
+                                      <div class="line number13 index12 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">QgsField("area", QVariant.Double)])</code>
+                                      </div>
+                                      <div class="line number14 index13 alt1">
+                                          <code class="plain plain">vl.updateFields()</code>
+                                      </div>
+                                      <div class="line number15 index14 alt2">
+                                          <code class="plain plain">#let's define some projection magic to get equal area:</code>
+                                      </div>
+                                      <div class="line number16 index15 alt1">&nbsp</div>
+                                      <div class="line number17 index16 alt2">
+                                          <code class="plain plain">src_crs = QgsCoordinateReferenceSystem(4326)</code>
+                                      </div>
+                                      <div class="line number18 index17 alt1">
+                                          <code class="plain plain">dest_crs = QgsCoordinateReferenceSystem(102013)</code>
+                                      </div>
+                                      <div class="line number19 index18 alt2">
+                                          <code class="plain plain">xform = QgsCoordinateTransform(src_crs, dest_crs)</code>
+                                      </div>
+                                      <div class="line number20 index19 alt1">&nbsp</div>
+                                      <div class="line number21 index20 alt2">
+                                          <code class="plain plain">#iterate through the times:</code>
+                                      </div>
+                                      <div class="line number22 index21 alt1">
+                                          <code class="plain plain">for hour in range(0,24):</code>
+                                      </div>
+                                      <div class="line number23 index22 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">for halfhrs in (0,3):</code>
+                                      </div>
+                                      <div class="line number24 index23 alt1">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">if hour<10:</code>
+                                      </div>
+                                      <div class="line number25 index24 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">timestamp='2018-02-01T0' + str(hour) + ':'+str(halfhrs)+'0:00Z01'</code>
+                                      </div>
+                                      <div class="line number26 index25 alt1">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">else:</code>
+                                      </div>
+                                      <div class="line number27 index26 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">timestamp='2018-02-01T' + str(hour) + ':'+str(halfhrs)+'0:00Z01'</code>
+                                      </div>
+                                      <div class="line number28 index27 alt1">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">print('timestamp: '+timestamp)</code>
+                                      </div>
+                                      <div class="line number29 index28 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">url = "https://isoline.route.cit.api.here.com/routing/7.2/calculateisoline.json?app_id=" + appID + "&app_code=" + appcode + "&mode=shortest;car;traffic:enabled&start=geo!" + coordinates + "&maxpoints=500&departure=" + timestamp + "&range=600,1200,1800&rangetype=time&jsonAttributes=41"</code>
+                                      </div>
+                                      <div class="line number30 index29 alt1">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">response = urllib2.urlopen(url)</code>
+                                      </div>
+                                      <div class="line number31 index30 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">data = json.load(response)</code>
+                                      </div>
+                                      <div class="line number32 index31 alt1">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">print("data: "+str(data))</code>
+                                      </div>
+                                      <div class="line number33 index32 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">#parse the polys:</code>
+                                      </div>
+                                      <div class="line number34 index33 alt1">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">for polygon in reversed(data['response']['isoline']):</code>
+                                      </div>
+                                      <div class="line number35 index34 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">pointArray = []</code>
+                                      </div>
+                                      <div class="line number36 index35 alt1">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">for ind in range(0,len(polygon['component'][0]['shape'])):</code>
+                                      </div>
+                                      <div class="line number37 index36 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">if ind%2 == 1:</code>
+                                      </div>
+                                      <div class="line number38 index37 alt1">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">pointArray.append(xform.transform(QgsPoint(polygon['component'][0]['shape'][ind], polygon['component'][0]['shape'][ind-1])))</code>
+                                      </div>
+                                      <div class="line number39 index38 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">#combine to polygon:</code>
+                                      </div>
+                                      <div class="line number40 index39 alt1">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">feature = QgsFeature()</code>
+                                      </div>
+                                      <div class="line number41 index40 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">feature.setGeometry(QgsGeometry.fromPolygon([pointArray]))</code>
+                                      </div>
+                                      <div class="line number42 index41 alt1">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">feature.setAttributes([polygon['range'], timestamp[0:16], feature.geometry().area()/1000000])</code>
+                                      </div>
+                                      <div class="line number43 index42 alt2">
+                                          <code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+                                          <code class="plain plain">pr.addFeatures([feature])</code>
+                                      </div>
+                                      <div class="line number44 index43 alt2">&nbsp</div>
+                                      <div class="line number45 index44 alt2">
+                                          <code class="plain plain">QgsMapLayerRegistry.instance().addMapLayer(vl)</code>
+                                      </div>
+                                  </div>
+                              </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p><img source="/images/DublinTravelTimeFeb1.gif" width="444" height="744" name="DublinIsochrones"></p>
+				</h4>
+           
+					
+			</div>
+			<!-- end #content -->
+			
+			<div id="sidebar">
+				<ul>
+					
+					<p><b>Postdoc researcher with the <a href="https://dashboards.maynoothuniversity.ie/" target="_blank">Building City Dashboards project</a> in the <a href="https://www.maynoothuniversity.ie/national-centre-geocomputation-ncg">National Centre for Geocomputation</a> at Maynooth University in Maynooth, Ireland. </b>
+						I am a spatial data scientist working with spatio-temporal data, urban environmental sensor analysis, and big data visualization. 
+						With the BCD project, I develop forecasting models and work with local authorities and national statistical institutes to make data accessible and useful for the public and urban decision makers.</p>
+						
+					<li>
+						<p> </p>
+						<p> </p>
+						<p> </p>
+						<br /> Maynooth University
+						<br /> National Centre for Geocomputation
+						<br />3rd floor, Iontas Building
+						<br />Email: sam.stehle@mu.ie
+						<br />LinkedIn: <a href="http://www.linkedin.com/pub/sam-stehle/53/97a/586" target="_blank">go to my profile</a>
+						<br />Twitter: <a href="https://twitter.com/SamStehle" target="_blank">@SamStehle</a>
+						</p>
+					</li>
+						
+						
+				</ul>
+			</div>
+			<!-- end #sidebar -->
+			
+			<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+		<!-- end #page -->
+
+		<div id="footer">
+			<p> Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+		</div>
+		<!-- end #footer -->
+	</body>
+</html>
