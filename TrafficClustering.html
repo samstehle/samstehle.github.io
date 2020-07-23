@@ -390,7 +390,7 @@ ggplot() +
   geom_line(data=centroids_frame, aes(x=times_list_date, y=centroids_monday, 
                                       colour=clusters_list), size=2) +
   labs(x="time of day", y="vehicle volume", colour="") +
-  scale_color_brewer(type="qual", palette="Set2") +
+  scale_color_brewer(type="qual", palette="Dark2") +
   scale_x_datetime(labels=date_format("%H:%M:%S"))  
                   </code>
                 </pre>
@@ -499,7 +499,7 @@ coordinates(ccity_locations)<- ~longo+lato
 GPS_locations <- GPS_locations[-which(GPS_locations@coords < -10),]
 
 tmap_mode('view')
-cluster_map <- tm_shape(GPS_locations) + tm_dots(size=0.04,col="monday", style="cat", palette="Set2") 
+cluster_map <- tm_shape(GPS_locations) + tm_dots(size=0.04,col="monday", style="cat", palette="Dark2") 
                     </code>
                 </pre>
             </div>
