@@ -1,0 +1,106 @@
+line_id;line_code;short_name;long_name;valid_from;valid_until
+124;124;124;124;01/01/1970;01/01/2036
+1003923;16A;16;16;01/01/1970;01/01/2036
+65;65;65;Eden Quay - Blessington - Ballymore Eustace;28/07/2010;01/01/2036
+1003922;20B;20;Ardlea Rd To Eden Quay / Stephens Green;28/07/2010;01/01/2036
+128;128;128;North Fringe Baldoyle to Rathmines;28/07/2010;01/01/2036
+1086740;78A;78;Aston Quay to Liffey Valley;28/07/2010;01/01/2036
+32;32;32;Eden Quay - Portmarnock;28/07/2010;01/01/2036
+74;74;74;Britain Quay - Stocking Avenue;28/07/2010;01/01/2036
+77;77;77;Ringsend Rd - Jobstown;28/07/2010;01/01/2036
+1051829;4A;401;Harristown to Stradbrook;28/07/2010;01/01/2036
+50;50;50;Eden Quay - Citywest;28/07/2010;01/01/2036
+51;51;51;Aston Quay - Clondalkin (Neilstown);28/07/2010;01/01/2036
+1014395;42A;422;Lwr Abbey St - Beaumont Hospital.;28/07/2010;01/01/2036
+1014397;51A;511;Lwr Abbey St. - Beaumont Hospt.;28/07/2010;01/01/2036
+68;68;68;Aston Quay - Newcastle(Ballynakelly);01/01/1970;01/01/2036
+121;121;121;Ratoath Rd to Drimnagh;01/01/1970;01/01/2036
+161;161;161;Nutgrove - Rockbrook;01/01/1970;01/01/2036
+1393079;7N;891;Nitelink 7N;01/01/1970;01/01/2036
+43;43;43;Lwr Abbey St - Swords Bu;12/02/2012;01/01/2036
+45;45;45;Eden Quay - Bray (Oldcou;12/02/2012;01/01/2036
+221;221;221;Shangan Road to Silloge;12/02/2012;01/01/2036
+47;47;47;Donnybrook Church to Belarmine;01/01/1970;01/01/2036
+19;19;19;Jamestown Road - Bulfin Road;01/01/1970;01/01/2036
+1193359;38A;38;Lower Abbey St to Damastown via Navan Rd;01/01/1970;01/01/2036
+236;236;238;BLANCH S.C TO BALLYCOOLIN    FACTORY LINK;01/01/1970;01/01/2036
+90;90;90;Heuston Station - Connolly Station;01/01/1970;01/01/2036
+5;5;7;O'Connell Street - Sandyford Ind. Est.;01/01/1970;01/01/2036
+8;8;8;O'Conn St to Dalkey;01/01/1970;01/01/2036
+1247273;25A;25;Merrion Square - Lucan (Superquinn / Adamstown);01/01/1970;01/01/2036
+184;184;145;Bray - Kilpedder;01/01/1970;01/01/2036
+1353028;84X;84;Newcastle - Eden Quay - Xpresso;01/01/1970;01/01/2036
+1376320;84N;84;Nitelink 84N;01/01/1970;01/01/2036
+2042526;70N;897;Dunboyne nitelink;01/01/1970;01/01/2036
+18;18;18;Sandymount - Palmerstown;12/10/2014;01/01/2036
+185;185;84;Shop River - Bray Station;12/10/2014;01/01/2036
+83;83;83;Kimmage - Harristown;12/10/2014;01/01/2036
+120;120;120;Ashtown Station - Parnell St;12/10/2014;01/01/2036
+122;122;122;Drimnagh - Ashington;12/10/2014;01/01/2036
+123;123;123;Marino - Walinstown (Kilnamanagh Rd);12/10/2014;01/01/2036
+25;25;25;Dodsboro - Merrion Square;12/10/2014;01/01/2036
+26;26;66;Palmerstown (Cemetery) - Merrion Square;12/10/2014;01/01/2036
+27;27;27;Jobstown - Clare Hall;12/10/2014;01/01/2036
+130;130;130;Castle Ave - Lwr Abbey St;12/10/2014;01/01/2036
+1005939;27B;272;Oscar Traynor Road - Heuston Station;10/07/2016;01/01/2036
+14;14;14;Dundrum Luas Stn - Ardlea Rd (Beaumont);10/07/2016;01/01/2036
+1712588;65B;65;Citywest - Hawkins St;13/10/2016;01/01/2036
+2771048;42D;424;Portmarnock - DCU;13/11/2016;01/01/2036
+2771049;31D;314;Baldoyle - DCU;13/11/2016;01/01/2036
+7;7;7;Brides Glen Luas - Mountjoy Square;13/11/2016;01/01/2036
+103;103;103;Clontarf Rd Dart Stn. - Omni Pk.;23/06/2013;01/01/2036
+75;75;75;Dun Laoghaire - Tallaght (The Square);23/06/2013;01/01/2036
+111;111;111;Dun Laoghaire - Louhglinstown Park;23/06/2013;01/01/2036
+1030708;53B;532;No longer in use;01/09/2013;01/01/2036
+140;140;140;Palmerston Park - Finglas (Ikea);01/09/2013;01/01/2036
+142;142;142;Portmarnock - Rathmines (Palmerston Park);01/09/2013;01/01/2036
+1;1;1;Sandymount - Santry via O'Connell Street;01/09/2013;01/01/2036
+2;2;3;No longer in use;01/09/2013;01/01/2036
+4;4;4;Monkstown Avenue - Harristown;01/09/2013;01/01/2036
+210;210;210;No longer in use;01/09/2013;01/01/2036
+1468594;27A;271;Blunden Drive - Eden Quay;01/09/2013;01/01/2036
+1011746;33A;331;Balbriggan / Skerries - Swords;01/09/2013;01/01/2036
+104;104;104;Clontarf Rd (Conquer Hill) - Santry (Shanard Rd);01/09/2013;01/01/2036
+116;116;116;Whitechurch - Parnell Square;01/09/2013;01/01/2036
+118;118;118;Kilternan - D'Olier Street;01/09/2013;01/01/2036
+13;13;13;Grange Castle - Harristown;01/09/2013;01/01/2036
+15;15;15;Ballycullen Road - Clongriffin;01/09/2013;01/01/2036
+16;16;16;Ballinteer - Dublin Airport;01/09/2013;01/01/2036
+86;86;86;No longer in use;01/09/2013;01/01/2036
+31;31;31;Howth Summit - Lower Abbey St;12/10/2014;01/01/2036
+33;33;33;Balbriggan - Lower Abbey St;12/10/2014;01/01/2036
+37;37;37;Blanchardstown Shopping Centre - Wilton Terrace;12/10/2014;01/01/2036
+38;38;38;Damastown - Burlington Road;12/10/2014;01/01/2036
+39;39;39;Ongar - Burlington Rd;12/10/2014;01/01/2036
+1260308;54A;54;Ellensborough - Pearse St;12/10/2014;01/01/2036
+145;145;145;Kilmacanogue - Heuston Rail Station;12/10/2014;01/01/2036
+40;40;40;Liffey Valley Shopping Centre - Finglas Village;12/10/2014;01/01/2036
+41;41;41;Swords Manor - Lower Abbey Street;12/10/2014;01/01/2036
+42;42;42;Sand's Hotel Portmarnock - Eden Quay;12/10/2014;01/01/2036
+44;44;44;Enniskerry - Larkhill;12/10/2014;01/01/2036
+49;49;49;Tallaght (The Square) - Pearse St;12/10/2014;01/01/2036
+9;9;9;Limekiln Avenue - Charelstown;12/10/2014;01/01/2036
+150;150;150;Rossmore - Fleet St;12/10/2014;01/01/2036
+151;151;151;Foxborough (Balgaddy Rd) - Docklands (East Rd);12/10/2014;01/01/2036
+270;270;238;Dunboyne - Blanchardstown Shopping Centre;12/10/2014;01/01/2036
+53;53;53;Dublin Ferryport - Talbot St;12/10/2014;01/01/2036
+59;59;59;Mackintosh Park - Dun Laoghaire;12/10/2014;01/01/2036
+1468595;27C;273;Cllare Hall - Eden Quay;12/10/2014;01/01/2036
+1468596;56A;56;Tallaght - Ringsend Rd;12/10/2014;01/01/2036
+63;63;63;Kilternan - Dun Laoghaire;12/10/2014;01/01/2036
+2106021;32X;32;UCD Belfield - Malahide;12/10/2014;01/01/2036
+67;67;67;Maynooth (Via Celbridge) - Merrion Square;12/10/2014;01/01/2036
+69;69;68;Rathcoole - Hawkins St;12/10/2014;01/01/2036
+102;102;102;Dublin Airport - Sutton Station;12/10/2014;01/01/2036
+1136253;33B;332;Portrane - Swords;12/10/2014;01/01/2036
+220;220;220;Lady's Well Rd - Ballymun (Shangan Rd);12/10/2014;01/01/2036
+1330001;45A;451;Ballywaltrim - Dun Laoghaire;12/10/2014;01/01/2036
+76;76;76;Tallaght (The Square) - Chapelizod;12/10/2014;01/01/2036
+79;79;79;Spiddal Park - Aston Quay;12/10/2014;01/01/2036
+1014394;17A;171;Kilbarrack - Blancharstown Centre;12/10/2014;01/01/2036
+114;114;114;Blackrock Station - Ticknock;12/10/2014;01/01/2036
+1551443;51D;51;Clondalkin - Hawkins St;12/10/2014;01/01/2036
+11;11;11;Sandyford Ind Estate - Wadelai Pk;12/10/2014;01/01/2036
+1014396;29A;29;Baldoyle (Coast Rd) - Lower Abbey St;12/10/2014;01/01/2036
+1260309;46A;46;Dun Laoghaire - Phoenix Park;12/10/2014;01/01/2036
+17;17;17;Blackrock - Rialto;12/10/2014;01/01/2036
